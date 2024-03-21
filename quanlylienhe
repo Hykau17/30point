@@ -43,7 +43,6 @@ do_action( 'flatsome_before_page' ); ?>
                                     <th>Tên</th>
                                     <th>Email</th>
                                     <th>Ghi Chú</th>
-                                    <th>Hành Động</th>
                                 </tr>
                             </thead>
                             <tbody>
