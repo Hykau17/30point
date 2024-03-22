@@ -51,7 +51,7 @@ do_action( 'flatsome_before_page' ); ?>
                               	<?php
                                 global $wpdb;
                                 // Select all data from the table
-                                $results = $wpdb->get_results("SELECT * FROM DANGKY", ARRAY_A);
+                                $results = $wpdb->get_results("SELECT * FROM DANGKYTOUR", ARRAY_A);
 
                                 // Check if there are any results
                                 if ($results)
@@ -67,7 +67,7 @@ do_action( 'flatsome_before_page' ); ?>
                                     <td><input name="<?php echo "row".$index."_name"; ?>" type="text" value="<?php echo $row['name']; ?>" /></td>
                                     <td><input name="<?php echo "row".$index."_email"; ?>" type="text" value="<?php echo $row['email']; ?>" /></td>
                                     <td><input name="<?php echo "row".$index."_message"; ?>" type="text" value="<?php echo $row['message']; ?>" /></td>
-                                    <td><input name="<?php echo "row".$index."_thoigiandukien";?>" type="date" value="<?php echo $row['thoigiandukien'];?>" /></td>
+                                    <td><input name="<?php echo "row".$index."_thoigiankhoihanh";?>" type="date" value="<?php echo $row['thoigiankhoihanh'];?>" /></td>
                                   	<td>
                                       <?php if($row['trangthai'] == 0) { ?>
                                       	<input type="checkbox" name="<?php echo "row".$index."_trangthai"; ?>" value="0" />
