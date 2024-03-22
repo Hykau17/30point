@@ -30,27 +30,28 @@ do_action( 'flatsome_before_page' ); ?>
                         <div class="table-title">
                             <div class="row">
                                 <div class="col-sm-8"><h2>Employee <b>Details</b></h2></div>
-                                <div class="col-sm-4">
-                                    <button type="button" class="btn btn-info add-new"><i class="fa fa-plus"></i> Thêm dòng</button>
-                                </div>
                             </div>
                         </div>
                         <table class="table table-bordered">
                             <thead>
                                 <tr>
                                   	<th>Stt</th>
-                                  	<th>Phone</th>
+                                  	<th>Số Điện Thoại</th>
                                     <th>Tên</th>
                                     <th>Email</th>
-                                    <th>Ghi Chú</th>
+                                    <th>Tour muốn đăng ký</th>
+                                  <th>Thời Gian Khởi Hành Dự Kiến</th>
+                                    <th>Trạng Thái (checked là duyệt)</th>
+                                  
                                 </tr>
                             </thead>
                             <tbody>
-                              	<form>
+                              	<form method="post">
+                                  <input type="hidden" name="frmQuanLy" value="frmQuanLy" />
                               	<?php
                                 global $wpdb;
                                 // Select all data from the table
-                                $results = $wpdb->get_results("SELECT * FROM lienhe", ARRAY_A);
+                                $results = $wpdb->get_results("SELECT * FROM DANGKY", ARRAY_A);
 
                                 // Check if there are any results
                                 if ($results)
@@ -61,15 +62,26 @@ do_action( 'flatsome_before_page' ); ?>
                                 ?>
                               	<tr>
                                   	<td><?php echo $index ?></td>
-                                    <td><?php echo $row['phone']; ?></td>
-                                    <td><?php echo $row['name']; ?></td>
-                                    <td><?php echo $row['email']; ?></td>
-                                    <td><?php echo $row['message']; ?></td>
+                                  	<input name="<?php echo "row".$index."_phone"; ?>" value="<?php echo $row['phone']; ?>" type="hidden" />
+                                  	<td><?php echo $row['phone']; ?></td>
+                                    <td><input name="<?php echo "row".$index."_name"; ?>" type="text" value="<?php echo $row['name']; ?>" /></td>
+                                    <td><input name="<?php echo "row".$index."_email"; ?>" type="text" value="<?php echo $row['email']; ?>" /></td>
+                                    <td><input name="<?php echo "row".$index."_message"; ?>" type="text" value="<?php echo $row['message']; ?>" /></td>
+                                    <td><input name="<?php echo "row".$index."_thoigiandukien";?>" type="date" value="<?php echo $row['thoigiandukien'];?>" /></td>
+                                  	<td>
+                                      <?php if($row['trangthai'] == 0) { ?>
+                                      	<input type="checkbox" name="<?php echo "row".$index."_trangthai"; ?>" value="0" />
+                                      <?php } else { ?>
+										<input type="checkbox" name="<?php echo "row".$index."_trangthai"; ?>" value="1" checked />
+                                      <?php } ?>
+                                  	</td>
                                 </tr>
-                                
                               	<?php
-                       
+                                      $index++;
                                     }
+                                ?>
+                                  <input type="hidden" name="totalRow" value="<?php echo --$index; ?>" />
+                                <?php
                                 } else {
                                     echo "No data found in the table.";
                                 }
