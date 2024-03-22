@@ -1,0 +1,24 @@
+
+<form method="post">
+<input type="hidden" name="my_form" value="my_form">
+<label for="name">Name:</label>
+<input type="text" name="name" required="">
+
+<label for="email">Email:</label>
+<input type="email" name="email" required="">
+
+<label for="phone">Phone:</label>
+<input type="phone" name="phone" required="">
+
+<label for="message">Message:</label>
+<textarea name="message" required=""></textarea>
+
+<label for="thoigankhoihanh">Thời Gian Khởi Hành:</label>
+<textarea name="thoigankhoihanh" required=""></textarea>
+
+<label for="trangthai	">Trạng Thái:</label>
+<textarea name="trangthai	" required=""></textarea>
+
+<input type="submit" value="Submit">
+</form>
+Đang hiển thị 900733294395508988.
