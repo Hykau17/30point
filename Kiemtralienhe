@@ -29,7 +29,7 @@ do_action( 'flatsome_before_page' ); ?>
                     <div class="table-wrapper">
                         <div class="table-title">
                             <div class="row">
-                                <div class="col-sm-8"><h2>Employee <b>Details</b></h2></div>
+                                <div class="col-sm-8"><h2>Kiểm Tra <b>Tour</b></h2></div>
                                 <div class="col-sm-4">
                                     <button type="button" class="btn btn-info add-new"><i class="fa fa-plus"></i> Thêm dòng</button>
                                 </div>
@@ -38,7 +38,7 @@ do_action( 'flatsome_before_page' ); ?>
                       	<form method="get">
                             <label for="phone">Phone:</label>
                             <input type="text" name="phone" required="">
-                            <input type="submit" value="Submit">
+                            <input type="submit" value="Nhập">
                         </form>
                       	<table class="table table-bordered">
                           <thead>
@@ -48,7 +48,7 @@ do_action( 'flatsome_before_page' ); ?>
                               <th>Email</th>
                               <th>Message</th>
                               <th>Phone</th>
-                              <th>Trang thai (checked = chưa duyệt)</th>
+                              <th>Trang thai (checked = đã duyệt)</th>
                             </tr>
                           </thead>
                           <tbody>
@@ -57,7 +57,7 @@ do_action( 'flatsome_before_page' ); ?>
                                   global $wpdb;
                                   $phone = $_GET['phone'];
                                   // Select all data from the table
-                                  $results = $wpdb->get_results("SELECT * FROM lienhe WHERE phone like '%$phone%'", ARRAY_A);
+                                  $results = $wpdb->get_results("SELECT * FROM dangkytour WHERE phone like '%$phone%'", ARRAY_A);
 
                                   // Check if there are any results
                                   if ($results)
@@ -69,13 +69,15 @@ do_action( 'flatsome_before_page' ); ?>
                                       <tr>
                                         <td><?php echo $index ?></td>
                                         <td><?php echo $row['name']; ?></td>
-                                        <td><?php echo $row['email']; ?></td>
+<td><?php echo $row['email']; ?></td>
                                         <td><?php echo $row['message']; ?></td>
                                         <td><?php echo $row['phone']; ?></td>
                                         <?php if ($row['trangthai'] == 0) { ?>
-                                        	<td>Chưa duyệt</td>
+                                        	<td><input type="checkbox" id="checkbox1" name="trangthai[]" value="0" disabled>
+</td>
                                         <?php } else if ($row['trangthai'] == 1) { ?>
-                                        	<td>Đã duyệt</td>
+                                        	<td><input type="checkbox" id="checkbox2" name="trangthai[]" value="1" checked disabled>
+</td>
                                         <?php } ?>
                                       </tr>
 
