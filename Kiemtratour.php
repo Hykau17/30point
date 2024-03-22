@@ -44,11 +44,12 @@ do_action( 'flatsome_before_page' ); ?>
                           <thead>
                             <tr>
                               <th>Stt</th>
-                              <th>Name</th>
+                              <th>Tên</th>
                               <th>Email</th>
-                              <th>Message</th>
-                              <th>Phone</th>
-                              <th>Trang thai (checked = đã duyệt)</th>
+                              <th>Tour muốn đăng ký</th>
+                              <th>Số điện thoại</th>
+                              <th>Thời gian khởi hành dự kiến</th>
+                              <th>Trang thái (checked = đã duyệt)</th>
                             </tr>
                           </thead>
                           <tbody>
@@ -57,7 +58,7 @@ do_action( 'flatsome_before_page' ); ?>
                                   global $wpdb;
                                   $phone = $_GET['phone'];
                                   // Select all data from the table
-                                  $results = $wpdb->get_results("SELECT * FROM dangkytour WHERE phone like '%$phone%'", ARRAY_A);
+                                  $results = $wpdb->get_results("SELECT * FROM DANGKYTOUR WHERE phone like '%$phone%'", ARRAY_A);
 
                                   // Check if there are any results
                                   if ($results)
@@ -69,9 +70,10 @@ do_action( 'flatsome_before_page' ); ?>
                                       <tr>
                                         <td><?php echo $index ?></td>
                                         <td><?php echo $row['name']; ?></td>
-<td><?php echo $row['email']; ?></td>
+                                        <td><?php echo $row['email']; ?></td>
                                         <td><?php echo $row['message']; ?></td>
                                         <td><?php echo $row['phone']; ?></td>
+                                        <td disabled><?php echo $row['thoigiankhoihanh']; ?></td>
                                         <?php if ($row['trangthai'] == 0) { ?>
                                         	<td><input type="checkbox" id="checkbox1" name="trangthai[]" value="0" disabled>
 </td>
